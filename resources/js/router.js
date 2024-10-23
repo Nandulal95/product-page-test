@@ -5,12 +5,21 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: () => ({ name: 'product', params: { slug: 'fall-limited-edition-sneakers' } })
+      //redirect: () => ({ name: 'product', params: { slug: 'fall-limited-edition-sneakers' } })
+      component: () => import('./views/Home.vue')
     },
     {
       path: '/shop/product/:slug',
       name: 'product',
       component: () => import('./views/Product.vue')
+    },
+    {
+      path: '/404',
+      component: () => import('./views/404.vue')
+    },
+    {
+      path: '/*',
+      redirect: '/404'
     }
   ],
 })
